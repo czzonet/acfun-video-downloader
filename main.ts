@@ -1,0 +1,1 @@
+const PREFIX = `https://tx-video.acfun.cn/mediacloud/acfun/acfun_video/segment/`
