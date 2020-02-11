@@ -36,7 +36,21 @@ console.log(
 
 下载[m3u8 downloader](https://github.com/nilaoda/N_m3u8DL-CLI/releases)，分别下载一个主程序和一个 dll 库文件。再下载[ffmpeg](https://ffmpeg.zeranoe.com/builds/win64/static/)，选最下面最新的进行解压，并把前面下载的两个文件拷贝到`bin`目录，双击运行主程序，输入第一步拷贝的链接粘贴即可下载，输出`.mp4`文件在当前目录的`Download`文件夹。
 
-### 不推荐旧方法
+## 演示
+
+- 普通视频
+
+![](./Snipaste_2020-02-11_10-22-22.png)
+
+- 番剧
+
+![](./Snipaste_2020-02-11_10-23-18.png)
+
+- 缓存中
+
+![](./Snipaste_2020-02-11_09-49-11.png)
+
+## 旧方法（不推荐）
 
 A 站原先用硕鼠直接可以下载，现在只能下 m3u8 文件，需要再用对应下载器下载整合。而且是相对地址需要前缀,步骤如下
 
