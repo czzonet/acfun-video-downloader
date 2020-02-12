@@ -1,4 +1,4 @@
-# A 站视频缓存
+# A 站视频缓存 | reddit 视频缓存
 
 谁不想在遇到好视频的时候能够缓存下来呢？
 
@@ -11,7 +11,7 @@
 - [ ] 脚本化
 - [ ] 网站化（大概不必要）
 
-## 方法
+## A 站
 
 ### 推荐
 
@@ -20,6 +20,8 @@
 - 1 页面脚本提取`m3u8`地址
 
 用`F12`打开控制台，输入以下代码：
+
+A 站
 
 ```js
 var acdata = JSON.parse(window.pageInfo.currentVideoInfo.ksPlayJson)
@@ -30,11 +32,19 @@ console.log(
 );
 ```
 
-注：_参考了脚本[Acfun-hls](https://greasyfork.org/zh-CN/scripts/389607-acfun-hls)_
+reddit
+
+```js
+var redditdata = document.getElementsByTagName("source");
+console.log(
+  "Please copy m3u8 url below(additional audio):\n复制以下m3u8链接（外挂音频）:\n",
+  redditdata[redditdata.length - 1].src
+);
+```
 
 - 2 使用下载器下载整合
 
-下载[m3u8 downloader](https://github.com/nilaoda/N_m3u8DL-CLI/releases)，分别下载一个主程序和一个 dll 库文件。再下载[ffmpeg](https://ffmpeg.zeranoe.com/builds/win64/static/)，选最下面最新的进行解压，并把前面下载的两个文件拷贝到`bin`目录，双击运行主程序，输入第一步拷贝的链接粘贴即可下载，输出`.mp4`文件在当前目录的`Download`文件夹。
+下载[m3u8 downloader](https://github.com/nilaoda/N_m3u8DL-CLI/releases)，分别下载一个主程序和一个 dll 库文件。再下载[ffmpeg](https://ffmpeg.zeranoe.com/builds/win64/static/)，选最下面最新的进行解压，并把前面下载的两个文件拷贝到`bin`目录，双击运行主程序，输入第一步拷贝的链接粘贴即可下载，输出`.mp4`文件在当前目录的`Download`文件夹。Reddit 是外挂音频，所以会有单独下载的音频文件，需要自己再合成一下。
 
 ## 演示
 
@@ -49,6 +59,10 @@ console.log(
 - 缓存中
 
 ![缓存中](./Snipaste_2020-02-11_09-49-11.png)
+
+- reddit
+
+![reddit](./Snipaste_2020-02-12_09-50-31.png)
 
 ## 旧方法（不推荐）
 
@@ -86,6 +100,7 @@ node ./dist/main.js
 - 20190903:添加一种方法
 - 20200201:添加新方法，升级旧方法
 - 20200211:修复番剧无法提取的问题
+- 20200212:新增 reddit 视频提取
 
 ## References
 
