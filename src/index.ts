@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         A 站视频缓存 视频链接解析
 // @namespace 	 czzonet
-// @version      1.0.16
+// @version      1.0.22
 // @description  谁不想在遇到好视频的时候能够缓存下来呢？
 // @author       czzonet
 // @include      *://www.acfun.cn/v/ac*
@@ -20,6 +20,7 @@
 // @grant        GM_getResourceURL
 // @grant        GM_getResourceText
 // ==/UserScript==
+
 
 // 等待页面加载完毕
 window.onload = function () {
@@ -43,11 +44,17 @@ window.onload = function () {
   descriptionElement.appendChild(oButNode);
 };
 
+// type Target = {
+//   pagrInfo:any
+// }
+
+// type MyWindow = typeof that& Target
+
 // 解析链接
 function getlink() {
   // 获取当前window
-  let pageWindow = this.window;
-  console.log("this.window", pageWindow);
+
+  let pageWindow = this.window as any
   // 视频链接的json对象
   var acdata = JSON.parse(pageWindow.pageInfo.currentVideoInfo.ksPlayJson)
     .adaptationSet.representation;
@@ -60,7 +67,7 @@ function getlink() {
 }
 
 // 创建一个文字节点
-function nodeText(text) {
+function nodeText(text: string) {
   var textNode = document.createElement("div");
   textNode.innerText = text;
 
