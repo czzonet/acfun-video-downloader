@@ -46,7 +46,7 @@ var acdata = JSON.parse(window.pageInfo.currentVideoInfo.ksPlayJson)
   .adaptationSet.representation;
 console.log(
   "Please copy m3u8 url below(max screen resolution):\n复制以下m3u8链接（最高清晰度）:\n",
-  acdata.pop().url
+  acdata.shift().url
 );
 ```
 
