@@ -42,12 +42,24 @@
 A 站
 
 ```js
-var acdata = JSON.parse(window.pageInfo.currentVideoInfo.ksPlayJson)
-  .adaptationSet.representation;
-console.log(
-  "Please copy m3u8 url below(max screen resolution):\n复制以下m3u8链接（最高清晰度）:\n",
-  acdata.shift().url
-);
+const ksPlay = JSON.parse(window.pageInfo.currentVideoInfo.ksPlayJson);
+
+if (!ksPlay) {
+  console.log("解析播放器数据源失败！");
+} else {
+  const dataVideos = ksPlay.adaptationSet;
+  for (let i = 0; i < dataVideos.length; i++) {
+
+    const representation = dataVideos[i].representation;
+
+    for (let j = 0; j < representation.length; j++) {
+      const dataVideo = representation[j];
+      const url = dataVideo.url;
+      const qualityLabel = dataVideo.qualityLabel;
+      console.log(`【${qualityLabel}】${url}`);
+    }
+  }
+}
 ```
 
 reddit
